@@ -12,11 +12,10 @@ class HomeView(tk.Tk, View):
     #        Constants
     #-----------------------------------------------------------------------
     PAD = 10
-    BTN_CAPTION = [
-        "Open Customers DB",
-        "Show customers with TreeView",
-        "Add customer",
-        "Exit"
+    TEXT_OPTIONS = [
+        "Iniciar el Juego",
+        "Configuración",
+        "Cerrar"
     ]
     
     
@@ -28,7 +27,7 @@ class HomeView(tk.Tk, View):
     """
     def __init__(self, controller):
         super().__init__()
-        self.title("Customers Manager")
+        self.title("Menu Principal")
         self.homeController = controller
         
         self._make_mainFrame()
@@ -60,11 +59,11 @@ class HomeView(tk.Tk, View):
         frame_btn = ttk.Frame(self.mainFrame)
         frame_btn.pack(fill="x")
         
-        for caption in self.BTN_CAPTION:
-            if caption == "Exit":
-                btn = ttk.Button(frame_btn, text=caption, command=self.destroy)
+        for title in self.TEXT_OPTIONS:
+            if title == "Cerrar":
+                btn = ttk.Button(frame_btn, text=title, command=self.destroy)
             else:
-                btn = ttk.Button(frame_btn, text=caption, command=lambda txt=caption: self.homeController.btnClicked(txt))
+                btn = ttk.Button(frame_btn, text=title, command=lambda txt=title: self.homeController.btnClicked(txt))
             
             btn.pack(fill="x")
             

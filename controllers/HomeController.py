@@ -11,7 +11,7 @@ class HomeController(Controller):
     #        Constructor
     #-----------------------------------------------------------------------
     def __init__(self):
-        self.homeView = self.loadView("Home")
+        self.homeView = self.loadView("home")
     
     
     #-----------------------------------------------------------------------
@@ -20,16 +20,14 @@ class HomeController(Controller):
     """
         Opens controller according to the option chosen
     """
-    def btnClicked(self, caption):
-        if caption == "Open Customers DB":
-            c = Core.openController("show")
+    def btnClicked(self, title):
+        if title == "Iniciar el Juego":
+            c = Core.openController("input")
             c.main()
-        elif caption == "Add customer":
-            c = Core.openController("add")
+        elif title == "Configuración":
+            c = Core.openController("setting")
             c.main()
-        elif caption == "Show customers with TreeView":
-            c = Core.openController("showTreeView")
-            c.main()
+
             
     """
         @Override
