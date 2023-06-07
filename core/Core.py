@@ -1,4 +1,5 @@
 import os
+import json
 import importlib
 from config import APP_PATH
 
@@ -30,3 +31,17 @@ class Core:
             response = class_()
         
         return response
+    
+    @staticmethod
+    def guardar_data_json(diccionario):
+        with open(APP_PATH+"/data/Data.json", 'w') as archivo:
+            json.dump(diccionario, archivo)
+
+    @staticmethod
+    def recuperar_data_json():
+        if os.path.isfile(APP_PATH+"/data/Data.json"):
+            with open(APP_PATH+"/data/Data.json", 'r') as archivo:
+                diccionario = json.load(archivo)
+            return diccionario
+        else:
+            return dict()
