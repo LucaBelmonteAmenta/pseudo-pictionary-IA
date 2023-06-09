@@ -60,7 +60,9 @@ def save_frame_camera_key(device_num, flipcam, dir_path, basename, x1=500, y1=10
             img2 = cv2.resize(img[refPoint[0][1]:refPoint[1][1], refPoint[0][0]:refPoint[1][0]], dim, interpolation = cv2.INTER_AREA)
             
             cv2.imwrite('{}_{}.{}'.format(base_path, tiempo, ext), img2)
-            imgf = cv2.imread('{}_{}.{}'.format(base_path, tiempo, ext), cv2.IMREAD_ANYCOLOR) 
+            cv2.imwrite('{}.{}'.format(base_path, ext), img2)
+            #imgf = cv2.imread('{}_{}.{}'.format(base_path, tiempo, ext), cv2.IMREAD_ANYCOLOR) 
+            imgf = cv2.imread('{}.{}'.format(base_path, ext), cv2.IMREAD_ANYCOLOR) 
             cv2.imshow(window_img, imgf)
 
             entro = True
