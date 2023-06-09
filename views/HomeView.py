@@ -27,7 +27,7 @@ class HomeView(tk.Tk, View):
     """
     def __init__(self, controller):
         super().__init__()
-        self.title("Menu Principal")
+        self.title("STEAM 2023")
         self.homeController = controller
         
         self._make_mainFrame()
@@ -49,7 +49,7 @@ class HomeView(tk.Tk, View):
         Sets view's title.
     """
     def _make_title(self):
-        title = ttk.Label(self.mainFrame, text="Customers Manager", font=("Helvetica", 20))
+        title = ttk.Label(self.mainFrame, text="Pseudo-Pictionary-IA", font=("Helvetica", 20))
         title.pack(padx=self.PAD, pady=self.PAD)
         
     """
