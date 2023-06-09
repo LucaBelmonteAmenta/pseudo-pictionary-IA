@@ -1,10 +1,11 @@
 # -*- encoding:utf-8 -*-
 from core.Core import Core
-
+from AIs.IA import JSONImageItemList
 
 """
     Main class. Responsible for running the application.
 """
+
 class Main:
     @staticmethod
     def run():

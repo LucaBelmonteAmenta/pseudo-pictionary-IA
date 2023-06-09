@@ -9,6 +9,8 @@ from scipy import ndimage, misc
 import data
 import math
 
+
+
 from fastai import *
 from fastai.basic_train import load_learner
 import cv2
@@ -22,9 +24,9 @@ from fastai.vision import *
 
 import sys
 
-sys.path.insert(0, "../")
+from config import APP_PATH
+from AIs.data import class_return, class_return_esp 
 
-from utils import *
 
 class JSONImageItemList(ImageList):
     def open(self, fn):
@@ -37,8 +39,9 @@ class JSONImageItemList(ImageList):
 
 def PredictDrawingPhoto(PATH_imagen, cantidad_resultados):
     
-    model = load_learner("../")
-    class_labels = data.class_return()
+    model = load_learner(APP_PATH)
+    class_labels = class_return()
+    class_labels_esp = class_return_esp()
 
     image = cv2.imread(PATH_imagen ,cv2.IMREAD_COLOR)
     size = 256
@@ -56,14 +59,14 @@ def PredictDrawingPhoto(PATH_imagen, cantidad_resultados):
     resultados = []
 
     for X in list(reversed(results_index[-cantidad_resultados:])):
-        resultado = {class_labels[X] : math.ceil((preds[X]).item() * 100)}
+        resultado = {class_labels_esp[X] : math.ceil((preds[X]).item() * 100)}
         resultados.append(resultado)
     
     return resultados
 
 
 if (__name__ == "__main__"):
-    path_image = '/home/tecnicus/Documentos/Repositorios/pseudo-pictionary-IA/images/screen_1686092506400181.jpg'
+    path_image = '/home/tecnicus/Documentos/Repositorios/pseudo-pictionary-IA/data/screen.jpg'
     prediccion = PredictDrawingPhoto(path_image, 10)
     print(prediccion)
 
